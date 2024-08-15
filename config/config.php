@@ -6,7 +6,7 @@ class ClaseConectar
     private $host = "localhost";
     private $usuario = "root";
     private $pass = "" ;
-    private $base = "sexto";
+    private $base = "examen1appweb";
     
     public function ProcedimientoParaConectar()
     {

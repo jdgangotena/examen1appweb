@@ -1,36 +1,36 @@
 <?php
-//TODO: Clase de Provedores
+//TODO: Clase de Clubes
 require_once('../config/config.php');
-class Productos
+class Clubes
 {
     //TODO: Implementar los metodos de la clase
 
-    public function todos() //select * from productos
+    public function todos() //select * from clubes
     {
         $con = new ClaseConectar();
         $con = $con->ProcedimientoParaConectar();
-        $cadena = "SELECT * FROM `productos`";
+        $cadena = "SELECT * FROM `clubes`";
         $datos = mysqli_query($con, $cadena);
         $con->close();
         return $datos;
     }
 
-    public function uno($idProveedores) //select * from productos where id = $id
+    public function uno($club_id) //select * from clubes where id = $id
     {
         $con = new ClaseConectar();
         $con = $con->ProcedimientoParaConectar();
-        $cadena = "SELECT * FROM `productos` WHERE `idProductos`=$idProductos";
+        $cadena = "SELECT * FROM `clubes` WHERE `club_id`=$club_id";
         $datos = mysqli_query($con, $cadena);
         $con->close();
         return $datos;
     }
 
-    public function insertar($Codigo_Barras, $Nombre_Producto, $Graba_IVA) //insert into productos (nombre, direccion, telefono) values ($nombre, $direccion, $telefono)
+    public function insertar($nombre, $deporte, $ubicacion) //insert into clubes (nombre, deporte, ubicacion) values ($nombre, $deporte, $ubicacion)
     {
         try {
             $con = new ClaseConectar();
             $con = $con->ProcedimientoParaConectar();
-            $cadena = "INSERT INTO `productos` ( `Codigo_Barras`, `Nombre_Producto`, `Graba_IVA`) VALUES ('$Codigo_Barras','$Nombre_Producto','$Graba_IVA')";
+            $cadena = "INSERT INTO `clubes` ( `nombre`, `deporte`, `ubicacion`) VALUES ('$nombre','$deporte','$ubicacion')";
             if (mysqli_query($con, $cadena)) {
                 return $con->insert_id;
             } else {
@@ -42,14 +42,14 @@ class Productos
             $con->close();
         }
     }
-    public function actualizar($idProductos, $Codigo_Barras, $Nombre_Producto, $Graba_IVA) //update productos set nombre = $nombre, direccion = $direccion, telefono = $telefono where id = $id
+    public function actualizar($club_id,$nombre,$deporte,$ubicacion) //update clubes
     {
         try {
             $con = new ClaseConectar();
             $con = $con->ProcedimientoParaConectar();
-            $cadena = "UPDATE `productos` SET `Codigo_Barras`='$Codigo_Barras',`Nombre_Producto`='$Nombre_Producto',`Graba_IVA`='$Graba_IVA' WHERE `idProductos` = $idProductos";
+            $cadena = "UPDATE `clubes` SET `nombre`='$nombre',`deporte`='$deporte',`ubicacion`='$ubicacion' WHERE `club_id` = $club_id";
             if (mysqli_query($con, $cadena)) {
-                return $idProductos;
+                return $club_id;
             } else {
                 return $con->error;
             }
@@ -59,12 +59,12 @@ class Productos
             $con->close();
         }
     }
-    public function eliminar($idProductos) //delete from provedores where id = $id
+    public function eliminar($club_id) //delete from clubes where id = $id
     {
         try {
             $con = new ClaseConectar();
             $con = $con->ProcedimientoParaConectar();
-            $cadena = "DELETE FROM `productos` WHERE `idProductos`= $idProductos";
+            $cadena = "DELETE FROM `clubes` WHERE `club_id`= $club_id";
             // echo $cadena;
             if (mysqli_query($con, $cadena)) {
                 return 1;
