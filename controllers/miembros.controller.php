@@ -27,7 +27,7 @@ switch ($_GET["op"]) {
         break;
         //TODO: procedimeinto para obtener un registro de la base de datos
     case 'uno':
-        $miembro_id = $_POST["miembro_id"];
+        $miembro_id = $_GET["miembro_id"];
         $datos = array();
         $datos = $miembros->uno($miembro_id);
         $res = mysqli_fetch_assoc($datos);

@@ -27,7 +27,7 @@ switch ($_GET["op"]) {
         break;
         //TODO: procedimeinto para obtener un registro de la base de datos
     case 'uno':
-        $club_id = $_POST["club_id"];
+        $club_id = $_GET["club_id"];
         $datos = array();
         $datos = $clubes->uno($club_id);
         $res = mysqli_fetch_assoc($datos);
@@ -56,7 +56,7 @@ switch ($_GET["op"]) {
     case 'eliminar':
         $club_id = $_POST["club_id"];
         $datos = array();
-        $datos = $clubes>eliminar($club_id);
+        $datos = $clubes->eliminar($club_id);
         echo json_encode($datos);
         break;
 }
